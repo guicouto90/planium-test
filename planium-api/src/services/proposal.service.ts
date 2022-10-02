@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ProposalModel } from 'src/model/proposal.model';
 import { BeneficiariesService } from './beneficiaries.service';
 import * as prices from 'src/data/prices.json';
+import * as plans from 'src/data/plans.json';
 import { PricesType, ProposalType } from 'src/utils/types';
 import { CreateBeneficiariesDto } from 'src/dto/create-beneficiaries.dto';
 import { ProposalModelProvider } from 'src/providers';
@@ -29,6 +30,7 @@ export class ProposalService {
   private createProposal(): void {
     const { chosenPlan, beneficiariesData } =
       this.beneficiariesService.getBeneficiaries();
+    const planName = this.getPlanName(chosenPlan);
     const price = this.getPlanPrice();
     const beneficiariesArray = [];
     beneficiariesData.forEach(({ name, age }) => {
@@ -36,7 +38,6 @@ export class ProposalService {
       beneficiariesArray.push({
         beneficiary: name,
         age: age,
-        chosenPlan,
         price: price[range],
       });
     });
@@ -47,10 +48,18 @@ export class ProposalService {
     const proposal = {
       beneficiaries: beneficiariesArray,
       quantity: beneficiariesArray.length,
+      chosenPlan: planName,
       totalPrice,
     };
     this.proposalModel.save(proposal);
   }
+
+  private getPlanName = (chosenPlan: number): string => {
+    const [planName] = plans
+      .filter(({ codigo }) => codigo === chosenPlan)
+      .map((plan) => plan.nome);
+    return planName;
+  };
 
   // Get the correct age range for the beneficiary
   private getAgeRange(age: number): string {

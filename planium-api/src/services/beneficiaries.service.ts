@@ -13,7 +13,6 @@ export class BeneficiariesService {
 
   createBeneficiaries(body: CreateBeneficiariesDto): void {
     this.checkData(body);
-    console.log(this.beneficiariesModel);
     this.beneficiariesModel.save(body);
   }
 
