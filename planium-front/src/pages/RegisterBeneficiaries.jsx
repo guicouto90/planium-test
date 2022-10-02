@@ -30,6 +30,7 @@ function RegisterBeneficiaries() {
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [update, setUpdate] = useState(0);
   const [enableProposal, setEnableProposal] = useState(true);
+  const [duplicated, setDuplicated] = useState(true);
 
   const enableButton = () => {
     if(name.length >= 3 && age >= 0) {
@@ -40,7 +41,7 @@ function RegisterBeneficiaries() {
   }
 
   const enableButtonProposal = () => {
-    if(beneficiaries.length > 0 && plan) {
+    if((beneficiaries.length > 0 && plan) && !duplicated) {
       setEnableProposal(false);
     } else {
       setEnableProposal(true);
@@ -59,6 +60,14 @@ function RegisterBeneficiaries() {
     setBeneficiaries(array);
   }
 
+  const duplicatedNames = () => {
+    const seen = new Set();
+    const duplicated = beneficiaries.some(
+      ({ name }) => seen.size === seen.add(name).size,
+    );
+    setDuplicated(duplicated);
+  }
+
   const handleOnChangeName = ({target: { value }}) => {
     setName(value);
   }
@@ -74,12 +83,14 @@ function RegisterBeneficiaries() {
   const handleOnClick = () => {
     addBeneficiary();
     setUpdate(update + 1);
+    duplicatedNames();
     setName('');
     setAge('');
   }
 
   const handleOnClickDelete = ({ target: { id } }) => {
     removeBeneficiary(id);
+    duplicatedNames();
     setUpdate(update + 1);
   }
 
@@ -175,7 +186,7 @@ function RegisterBeneficiaries() {
               ))}
             </Select>
           </FormControl>
-          <span>* Necessário ter um beneficiario cadastrado e um plano selecionado para habilitar o botão</span>
+          <span>* Necessário ter um beneficiario cadastrado, não pode haver nomes duplicados e tem que ter um plano selecionado para habilitar o botão</span>
         </Box>
         <Button
           color="warning"
