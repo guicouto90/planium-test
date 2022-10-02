@@ -1,3 +1,24 @@
+<div align="center">
+
+# Planium-test Challenge
+
+Esse repositório se trata do teste técnico para empresa [Bitix/Planium].
+
+</div>
+
+## Tecnologias usadas:
+- Backend:
+  - NodeJS;
+  - NestJs.
+- Frontend:
+  - React;
+  - Biblioteca MUI.
+
+## Deploys:
+- Frontend: https://planium-front.vercel.app/
+- Backend:: https://planium-api-test.herokuapp.com/plans
+
+## Case do projeto:
 
 <img src="https://www.planium.io/wordpress/wp-content/uploads/2018/11/logo-Planium-06.svg" width="250" height="100">
 **[Especificações para o teste]**
@@ -30,7 +51,6 @@
       - Caso o usuário liste um registro inexistente, deve mostrar mensagem de erro.
 
 
-
 5. Essa API deverá ler a tabela de Plano e a tabela de Preço, e retornar:
     - Preço de cada beneficiário para o plano escolhido, juntamente com a sua idade.
     - O preço total do Plano escolhido (soma do preço de cada beneficiário)
@@ -45,3 +65,49 @@
 
 
 **Good luck and have fun :)**
+
+## Instruções de uso para API localmente:
+- Clone o repositório em sua máquina;
+- Acesse a pasta `/backend`;
+- Instale as dependencias com o comando `npm install`;
+- Utilize o comando `npm start` para iniciar a aplicação;
+- Aplicação utilizará a porta `3001` do localhost.
+ API possui as seguintes rotas:
+    - POST: `/plans/beneficiaries`
+    - GET `/plans/proposal`
+
+#### POST `/plans/beneficiaries`:
+- API permite que seja criado um novo cadastro de beneficiario através do método POST no endpoint `/plans/beneficiaries` passando no body um json no formato:
+```json
+    {
+      "beneficiariesData": [
+        {
+          "name": "String com no minimo 3 caracteres",
+          "age:" "Numero igual/maior que 0",
+        }
+      ],
+      "chosenPlan": "Numero referente ao codigo do plano selecionado",
+    }
+```
+#### GET `/plans/proposal`:
+- API permite que seja possivel listar a proposta cadastrada através dp método GET no endpoint `/plans/proposal`.
+
+## Instruções de uso para o Frontend localmente:
+- Clone o repositório em sua máquina;
+- Acesse a pasta `/frontend`;
+- Instale as dependencias com o comando `npm install`;
+- Utilize o comando `npm start` para iniciar a aplicação;
+- Aplicação utilizará a porta `3000` do localhost;
+- O front já está integrado com o backend.
+- O frontend possui 2 rotas:
+  - `/register-beneficiaries`, onde é possível cadastrar novos registros;
+  - `/list-proposal`, onde listará todos os registros cadastrados;
+
+## Próximos passos no projeto:
+- Aprimoramento nos teste,
+- Implementação de algum banco de dados.
+
+### Considerações finais:
+  Dúvidas ou sugestões me contate por:
+  - Linkedin: https://www.linkedin.com/in/guicouto90/
+  - Email: gui.couto90@yahoo.com.br
