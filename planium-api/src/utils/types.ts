@@ -25,7 +25,6 @@ export type PlanType = {
 export type BeneficiaryProposalType = {
   benecifiary: string;
   age: number;
-  chosenPlan: number;
   price: number;
 };
 
@@ -33,4 +32,5 @@ export type ProposalType = {
   beneficiaries: BeneficiaryProposalType[];
   quantity: number;
   totalPrice: number;
+  chosenPlan: string;
 };

@@ -16,9 +16,8 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
-import plans from '../plans.json';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { postRegister } from "../axios";
+import { getPlans, postRegister } from "../axios";
 
 function RegisterBeneficiaries() {
 	const theme = createTheme();
@@ -27,6 +26,7 @@ function RegisterBeneficiaries() {
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
   const [plan, setPlan] = useState()
+  const [plans, setPlans] = useState([])
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [update, setUpdate] = useState(0);
   const [enableProposal, setEnableProposal] = useState(true);
@@ -99,6 +99,12 @@ function RegisterBeneficiaries() {
     history('/list-proposal');
   }
 
+  const getSelectPlans = async () => {
+    const result = await getPlans();
+    setPlans(result);
+    console.log(result);
+  }
+
   useEffect(() => {
     enableButton();
     enableButtonProposal();
@@ -106,6 +112,10 @@ function RegisterBeneficiaries() {
 
   useEffect(() => {
   }, [beneficiaries]);
+
+  useEffect(() => {
+    getSelectPlans();
+  }, [])
 
   return(
     <ThemeProvider theme={theme}>

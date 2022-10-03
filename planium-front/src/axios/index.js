@@ -25,7 +25,19 @@ const getRegisters = async() => {
   }
 }
 
+// GET ALL PLANS
+const getPlans = async() => {
+  try {
+    const { data } = await axios.get(`${url}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export {
   postRegister,
   getRegisters,
+  getPlans
 }
