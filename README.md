@@ -2,7 +2,7 @@
 
 # Planium-test Challenge
 
-Esse repositório se trata do teste técnico para empresa [Bitix/Planium].
+Esse repositório se trata do teste técnico para empresa Bitix/Planium.
 
 </div>
 
@@ -16,7 +16,7 @@ Esse repositório se trata do teste técnico para empresa [Bitix/Planium].
 
 ## Deploys:
 - Frontend: https://planium-front.vercel.app/
-- Backend:: https://planium-api-test.herokuapp.com/plans
+- Backend: https://planium-api-test.herokuapp.com/plans
 
 ## Case do projeto:
 
@@ -68,7 +68,7 @@ Esse repositório se trata do teste técnico para empresa [Bitix/Planium].
 
 ## Instruções de uso para API localmente:
 - Clone o repositório em sua máquina;
-- Acesse a pasta `/backend`;
+- Acesse a pasta `/planium-api`;
 - Instale as dependencias com o comando `npm install`;
 - Utilize o comando `npm start` para iniciar a aplicação;
 - Aplicação utilizará a porta `3001` do localhost.
@@ -94,7 +94,7 @@ Esse repositório se trata do teste técnico para empresa [Bitix/Planium].
 
 ## Instruções de uso para o Frontend localmente:
 - Clone o repositório em sua máquina;
-- Acesse a pasta `/frontend`;
+- Acesse a pasta `/planium-front`;
 - Instale as dependencias com o comando `npm install`;
 - Utilize o comando `npm start` para iniciar a aplicação;
 - Aplicação utilizará a porta `3000` do localhost;
@@ -104,7 +104,8 @@ Esse repositório se trata do teste técnico para empresa [Bitix/Planium].
   - `/list-proposal`, onde listará todos os registros cadastrados;
 
 ## Próximos passos no projeto:
-- Aprimoramento nos teste,
+- Aprimoramento nos teste;
+- Testes no frontend;
 - Implementação de algum banco de dados.
 
 ### Considerações finais:
