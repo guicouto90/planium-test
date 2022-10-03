@@ -64,6 +64,7 @@ describe('ProposalService', () => {
       expect(result.beneficiaries[2].price).toBe(9);
       expect(result.beneficiaries[3].price).toBe(11);
       expect(result.totalPrice).toBe(45);
+      expect(result.chosenPlan).toBe('Bitix Customer Plano 1');
 
       body = {
         beneficiariesData: [
